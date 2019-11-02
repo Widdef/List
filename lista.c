@@ -17,7 +17,7 @@ void list_add_end(list *p, int value)
 		list new_el = malloc(sizeof(list));
 		new_el->data = value;
 		new_el->next = NULL;
-		p->next = &new_el;
+		p = new_el;
 	}else
 		list_add_end((*p)->next, value);
 }
@@ -28,14 +28,14 @@ list list_add_start(list *p, int value)
 		list new_el = malloc(sizeof(list));
 		new_el->data = value;
 		new_el->next = NULL;
-		return new_el;
+		p = new_el;
 	}
 	else
 	{
 		list new_el = malloc(sizeof(list));
 		new_el->data = value;
 		new_el->next = p;
-		return new_el;
+		*p = new_el;
 	}
 }
 
@@ -48,7 +48,7 @@ void list_read_start(list p)
 {
 	while (p != NULL)
 	{
-		printf("%d\n", p->data);
+		printf("%djj\n", p->data);
 		p = p->next;
 	}
 }
