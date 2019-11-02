@@ -1,0 +1,11 @@
+﻿  lista.c
+c:\users\mzygo\source\repos\algorytmy\zad_1\lista\lista.c(20): error C2223: left of '->next' must point to struct/union
+c:\users\mzygo\source\repos\algorytmy\zad_1\lista\lista.c(22): warning C4047: 'function': 'list *' differs in levels of indirection from 'ell *'
+c:\users\mzygo\source\repos\algorytmy\zad_1\lista\lista.c(22): warning C4024: 'list_add_end': different types for formal and actual parameter 1
+c:\users\mzygo\source\repos\algorytmy\zad_1\lista\lista.c(37): warning C4047: '=': 'ell *' differs in levels of indirection from 'list *'
+c:\users\mzygo\source\repos\algorytmy\zad_1\lista\lista.c(64): warning C4047: 'function': 'list *' differs in levels of indirection from 'list'
+c:\users\mzygo\source\repos\algorytmy\zad_1\lista\lista.c(64): warning C4024: 'list_add_end': different types for formal and actual parameter 1
+c:\users\mzygo\source\repos\algorytmy\zad_1\lista\lista.c(65): warning C4047: 'function': 'list *' differs in levels of indirection from 'list'
+c:\users\mzygo\source\repos\algorytmy\zad_1\lista\lista.c(65): warning C4024: 'list_add_end': different types for formal and actual parameter 1
+c:\users\mzygo\source\repos\algorytmy\zad_1\lista\lista.c(66): warning C4047: 'function': 'list *' differs in levels of indirection from 'list'
+c:\users\mzygo\source\repos\algorytmy\zad_1\lista\lista.c(66): warning C4024: 'list_add_start': different types for formal and actual parameter 1
