@@ -1,10 +1,2 @@
 ﻿  lista.c
-c:\users\mzygo\source\repos\list\lista.c(20): warning C4047: '=': 'list **' differs in levels of indirection from 'list'
-c:\users\mzygo\source\repos\list\lista.c(22): error C2223: left of '->next' must point to struct/union
-c:\users\mzygo\source\repos\list\lista.c(22): warning C4047: 'function': 'list **' differs in levels of indirection from 'int'
-c:\users\mzygo\source\repos\list\lista.c(22): warning C4024: 'list_add_end': different types for formal and actual parameter 1
-c:\users\mzygo\source\repos\list\lista.c(22): error C2198: 'list_add_end': too few arguments for call
-c:\users\mzygo\source\repos\list\lista.c(31): warning C4047: '=': 'list *' differs in levels of indirection from 'list'
-c:\users\mzygo\source\repos\list\lista.c(37): warning C4047: '=': 'ell *' differs in levels of indirection from 'list *'
-c:\users\mzygo\source\repos\list\lista.c(64): warning C4047: 'function': 'list **' differs in levels of indirection from 'list'
-c:\users\mzygo\source\repos\list\lista.c(64): warning C4024: 'list_add_end': different types for formal and actual parameter 1
+  lista.vcxproj -> C:\Users\mzygo\source\repos\Widdef\List\x64\Debug\lista.exe
