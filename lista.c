@@ -112,18 +112,17 @@ void list_find_add_after(list **p, int value, int find)
 		list *new_el = (list*)malloc(sizeof(list));
 		new_el->data = value;
 		new_el->next = (*marker)->next;
-		*marker = new_el;
+		(*marker)->next = new_el;
 	}
 	else
 	{
 		char dec;
-		printf("Element not exist\nDo you want create element as last element of list? (Y/N)");
-		scanf("%c", &dec);
-		while (dec != 'y' && dec != 'Y' && dec != 'n' && dec != 'N')
+		printf("Element not exist\n");
+		do
 		{
 			printf("Do you want create element as last element of list? (Y/N)");
 			scanf("%c", &dec);
-		}
+		} while (dec != 'y' && dec != 'Y' && dec != 'n' && dec != 'N');
 		if (dec == 'Y' || dec == 'y')
 			list_add_end(p, value);
 	}
