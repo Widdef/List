@@ -120,7 +120,7 @@ void list_find_add_after(list **p, int value, int find)
 		printf("Element not exist\n");
 		do
 		{
-			printf("Do you want create element as last element of list? (Y/N)");
+			printf("Do you want to create element as last element of the list? (Y/N)");
 			scanf("%c", &dec);
 		} while (dec != 'y' && dec != 'Y' && dec != 'n' && dec != 'N');
 		if (dec == 'Y' || dec == 'y')
@@ -130,5 +130,54 @@ void list_find_add_after(list **p, int value, int find)
 
 void list_find_add_before(list **p, int value, int find)
 {
+	int flag = 0;
+	list **marker = p;
+	while (*marker != NULL)
+	{
+		if ((*marker)->next->data == find)
+		{
+			flag = 1;
+			break;
+		}
+		marker = &(*marker)->next;
+	}
+	if (flag == 1)
+	{
+		list *new_el = (list*)malloc(sizeof(list));
+		new_el->data = value;
+		new_el->next = (*marker)->next;
+		(*marker)->next = new_el;
+	}
+	else
+	{
+		char dec;
+		printf("Element not exist\n");
+		do
+		{
+			printf("Do you want to create element as first element of the list? (Y/N)");
+			scanf("%c", &dec);
+		} while (dec != 'y' && dec != 'Y' && dec != 'n' && dec != 'N');
+		if (dec == 'Y' || dec == 'y')
+			list_add_start(p, value);
+	}
+}
 
+void list_find_delete(list **p, int find)
+{
+	int flag = 0;
+	int index = 0;
+	list **marker = p;
+	while (*marker != NULL)
+	{
+		index++;
+		if ((*marker)->next->data == find)
+		{
+			flag = 1;
+			break;
+		}
+		marker = &(*marker)->next;
+	}
+	list *tmp = (*marker)->next;
+	(*marker)->next = (*marker)->next->next;
+	free(tmp);
 }

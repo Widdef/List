@@ -16,3 +16,4 @@ void list_delete_last(list**);
 void list_find(list**, int);
 void list_find_add_after(list**, int, int);
 void list_find_add_before(list**, int, int);
+void list_find_delete(list**, int);

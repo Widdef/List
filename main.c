@@ -31,7 +31,7 @@ int main()
 		printf("4)Usun ostatni element listy\n");
 		printf("5)Odszukaj zadany element\n");
 		printf("6)Dodaj nowy element przed lub za wskazanym\n");
-		printf("7)dodaj element na poczatku listy\n");
+		printf("7)Usun wskazany element\n");
 		printf("8)dodaj element na poczatku listy\n");
 		printf("9)dodaj element na poczatku listy\n");
 		printf("10)wyswietl zawartosc listy\n");
@@ -81,6 +81,10 @@ int main()
 					continue;
 				}
 			} while (chose != 1 && chose != 2);
+			continue;
+		case 7:
+			find_value(&find);
+			list_find_delete(&head, find);
 			continue;
 		case 10:
 			list_read(head);
