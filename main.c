@@ -9,6 +9,11 @@ void ask_value(int *value)
 	printf("\nPodaj wartosc do dodania: ");
 	scanf("%d", value);
 }
+void find_value(int *value)
+{
+	printf("\nPodaj wartosc do wyszukania: ");
+	scanf("%d", value);
+}
 
 
 int main()
@@ -16,6 +21,7 @@ int main()
 	list *head = NULL;
 	int chose = 0;
 	int value;
+	int find;
 	do
 	{
 		system("CLS");
@@ -24,7 +30,7 @@ int main()
 		printf("3)Usun pierwszy element listy\n");
 		printf("4)Usun ostatni element listy\n");
 		printf("5)Odszukaj zadany element\n");
-		printf("6)dodaj element na poczatku listy\n");
+		printf("6)Dodaj nowy element przed lub za wskazanym\n");
 		printf("7)dodaj element na poczatku listy\n");
 		printf("8)dodaj element na poczatku listy\n");
 		printf("9)dodaj element na poczatku listy\n");
@@ -48,9 +54,33 @@ int main()
 			list_delete_last(&head);
 			continue;
 		case 5:
-			ask_value(&value);
-			list_find(&head, value);
+			find_value(&find);
+			list_find(&head, find);
 			system("PAUSE");
+			continue;
+		case 6:
+			do
+			{
+				system("CLS");
+				printf("1) Add before\n");
+				printf("2) Add after\n");
+				scanf("\n%d", &chose);
+				switch (chose)
+				{
+				case 1:
+					find_value(&find);
+					ask_value(&value);
+					list_find_add_before(&head, value, find);
+					continue;
+				case 2:
+					find_value(&find);
+					ask_value(&value);
+					list_find_add_after(&head, value, find);
+					continue;
+				default:
+					continue;
+				}
+			} while (chose != 1 && chose != 2);
 			continue;
 		case 10:
 			list_read(head);
