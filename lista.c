@@ -1,13 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <Windows.h>
-
-typedef struct ell
-{
-	int data;
-	struct ell *next;
-
-}list;
+#include "lista.h"
 
 
 void list_add_end(list **p, int value)
@@ -47,8 +38,9 @@ void list_reverse(list *p)
 	//list first;
 }
 
-void list_read_start(list *p)
+void list_read(list *p)
 {
+	printf("\n\n");
 	while (p != NULL)
 	{
 		printf("%d\n", p->data);
@@ -56,20 +48,46 @@ void list_read_start(list *p)
 	}
 }
 
-void list_read_end(list p)
+void list_delete_first(list **p)
 {
-	
+	if (*p != NULL)
+	{
+		list *tmp = *p;
+		*p = (*p)->next;
+		free(tmp);
+	}
 }
 
-int main()
+void list_delete_last(list **p)
 {
-	list *head = NULL;
-	list_add_end(&head, 3);
-	list_add_end(&head, 5);
-	list_add_start(&head, 12);
-	list_read_start(head);
+	if (*p != NULL)
+	{
+		list **marker = p;
+		while ((*marker)->next)
+		{
+			marker = &(*marker)->next;
+		}
+		list *tmp = *marker;
+		(*p)->next = NULL;
+		free(tmp);
+	}
+}
 
-	system("PAUSE");
-	free(head);
-	return 0;
+void list_find(list **p, int value)
+{
+	int flag = 0;
+	list **marker = p;
+	while (marker)
+	{
+		if ((*marker)->data == value)
+		{
+			flag = 1;
+			break;
+		}
+		marker = &(*marker)->next;
+	}
+	if (flag)
+		printf("Element exist\n");
+	else
+		printf("Element not exist");
 }
