@@ -188,7 +188,7 @@ int check_sting(char *str)
 void list_from_file(list **head)
 {
 	int value;
-	char file;
+	char file[256];
 	int i_value;
 	int b_val = 0;
 	FILE *fptr;
@@ -222,6 +222,42 @@ void list_from_file(list **head)
 						list_add_end(head, i_value - 48);
 			} while (i_value != EOF);
 			printf("Udalo sie odczytac dane z pliku.\n");
+			fclose(fptr);
+			system("PAUSE");
+			break;
+		}
+		printf("Podales zly format pliku.\n");
+		system("PAUSE");
+	} while (!value); // Pêtla nie zakonczy sie do momentu podania pliku z rozszerzeniem txt
+}
+
+void list_to_file(list *head)
+{
+	int value;
+	char file[256];
+	int i_value;
+	int b_val = 0;
+	FILE *fptr;
+	do {
+		printf_s("Podaj nazwe pliku: ");
+		scanf("%s", &file);
+		value = check_sting(&file); //Sprawdza czy plik zostal podany z rozszerzeniem txt TAK - 1 NIE - 0 
+		if (value)
+		{
+			fptr = fopen(&file, "w");
+			if (fptr == NULL) // Czy uda³o siê otworzyæ plik
+			{
+				printf("Blad otwarcia pliku.\n");
+				system("PAUSE");
+				fclose(fptr);
+				break;
+			}
+			while (head != NULL)
+			{
+				fprintf(fptr,"%d ", head->data);
+				head = head->next;
+			}
+			printf("Udalo sie zapisac dane do pliku.\n");
 			fclose(fptr);
 			system("PAUSE");
 			break;

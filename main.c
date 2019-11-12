@@ -33,7 +33,7 @@ int main()
 		printf("6)Dodaj nowy element przed lub za wskazanym\n");
 		printf("7)Usun wskazany element\n");
 		printf("8)Wczytaj zawartosc listy z pliku\n");
-		printf("9)dodaj element na poczatku listy\n");
+		printf("9)Zapisz zawartosc listy z pliku\n");
 		printf("10)wyswietl zawartosc listy\n");
 		printf("0)Wyjscie\n");
 		scanf("%d", &chose);
@@ -88,6 +88,9 @@ int main()
 			continue;
 		case 8:
 			list_from_file(&head);
+			continue;
+		case 9:
+			list_to_file(head);
 			continue;
 		case 10:
 			list_read(head);
