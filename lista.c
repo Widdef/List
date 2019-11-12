@@ -33,11 +33,6 @@ void list_add_start(list **p, int value)
 	}
 }
 
-void list_reverse(list *p)
-{
-	//list first;
-}
-
 void list_read(list *p)
 {
 	printf("\n\n");
@@ -180,4 +175,58 @@ void list_find_delete(list **p, int find)
 	list *tmp = (*marker)->next;
 	(*marker)->next = (*marker)->next->next;
 	free(tmp);
+}
+
+int check_sting(char *str)
+{
+	int len = (int)strlen(str);
+	if (str[len - 3] == 't' && str[len - 4] == '.' && str[len - 2] == 'x' && str[len] == 't');
+		return 1;
+	return 0;
+}
+
+void list_from_file(list **head)
+{
+	int value;
+	char file;
+	int i_value;
+	int b_val = 0;
+	FILE *fptr;
+	do {
+		printf_s("Podaj nazwe pliku: ");
+		scanf("%s", &file);
+		value = check_sting(&file); //Sprawdza czy plik zostal podany z rozszerzeniem txt TAK - 1 NIE - 0 
+		if (value)
+		{
+			fptr = fopen(&file, "r");
+			if (fptr == NULL) // Czy uda³o siê otworzyæ plik
+			{
+				printf("Blad otwarcia pliku.\n");
+				system("PAUSE");
+				fclose(fptr);
+				break;
+			}
+			do
+			{
+				i_value = fgetc(fptr);
+				if (i_value == 32)
+					continue;
+				if (i_value == 45)
+				{
+					b_val == 1;
+				}
+				if(i_value >= 48)
+					if(b_val)
+						list_add_end(head, (i_value - 48)*-1); // i_value przechowuje wartosci wg tablicy ascii
+					else
+						list_add_end(head, i_value - 48);
+			} while (i_value != EOF);
+			printf("Udalo sie odczytac dane z pliku.\n");
+			fclose(fptr);
+			system("PAUSE");
+			break;
+		}
+		printf("Podales zly format pliku.\n");
+		system("PAUSE");
+	} while (!value); // Pêtla nie zakonczy sie do momentu podania pliku z rozszerzeniem txt
 }

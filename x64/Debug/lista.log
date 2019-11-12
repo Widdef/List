@@ -1,4 +1,3 @@
 ﻿  lista.c
-  main.c
-  Generating Code...
-  lista.vcxproj -> C:\Users\mzygo\source\repos\List\x64\Debug\lista.exe
+c:\users\mzygo\source\repos\widdef\list\lista.c(216): warning C4553: '==': result of expression not used; did you intend '='?
+  lista.vcxproj -> C:\Users\mzygo\source\repos\Widdef\List\x64\Debug\lista.exe
