@@ -68,7 +68,7 @@ void list_delete_last(list **p)
 	}
 }
 
-void list_find(list **p, int value)
+int list_find(list **p, int value)
 {
 	int flag = 0;
 	int index = 0;
@@ -84,9 +84,12 @@ void list_find(list **p, int value)
 		marker = &(*marker)->next;
 	}
 	if (flag)
+	{
 		printf("Element exist. Index: %d\n", index);
-	else
-		printf("Element not exist\n");
+		return 1;
+	}
+	printf("Element not exist\n");
+	return 0;
 }
 
 void list_find_add_after(list **p, int value, int find)
@@ -195,10 +198,10 @@ void list_from_file(list **head)
 	do {
 		printf_s("Podaj nazwe pliku: ");
 		scanf("%s", &file);
-		value = check_sting(&file); //Sprawdza czy plik zostal podany z rozszerzeniem txt TAK - 1 NIE - 0 
+		value = check_sting(file); //Sprawdza czy plik zostal podany z rozszerzeniem txt TAK - 1 NIE - 0 
 		if (value)
 		{
-			fptr = fopen(&file, "r");
+			fptr = fopen(file, "r");
 			if (fptr == NULL) // Czy uda³o siê otworzyæ plik
 			{
 				printf("Blad otwarcia pliku.\n");
@@ -213,11 +216,14 @@ void list_from_file(list **head)
 					continue;
 				if (i_value == 45)
 				{
-					b_val == 1;
+					b_val = 1;
 				}
 				if(i_value >= 48)
-					if(b_val)
+					if (b_val)
+					{
 						list_add_end(head, (i_value - 48)*-1); // i_value przechowuje wartosci wg tablicy ascii
+						b_val = 0;
+					}
 					else
 						list_add_end(head, i_value - 48);
 			} while (i_value != EOF);
@@ -235,16 +241,14 @@ void list_to_file(list *head)
 {
 	int value;
 	char file[256];
-	int i_value;
-	int b_val = 0;
 	FILE *fptr;
 	do {
 		printf_s("Podaj nazwe pliku: ");
 		scanf("%s", &file);
-		value = check_sting(&file); //Sprawdza czy plik zostal podany z rozszerzeniem txt TAK - 1 NIE - 0 
+		value = check_sting(file); //Sprawdza czy plik zostal podany z rozszerzeniem txt TAK - 1 NIE - 0 
 		if (value)
 		{
-			fptr = fopen(&file, "w");
+			fptr = fopen(file, "w");
 			if (fptr == NULL) // Czy uda³o siê otworzyæ plik
 			{
 				printf("Blad otwarcia pliku.\n");
@@ -265,4 +269,20 @@ void list_to_file(list *head)
 		printf("Podales zly format pliku.\n");
 		system("PAUSE");
 	} while (!value); // Pêtla nie zakonczy sie do momentu podania pliku z rozszerzeniem txt
+}
+
+void list_delete_all_found_not_rek(list **p, int value)
+{
+	while (list_find(p,value))
+	{
+		list_find_delete(p, value);
+	}
+}
+
+void list_delete_all_found_rek(list **p, int value)
+{
+	while (list_find(p, value))
+	{
+
+	}
 }
