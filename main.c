@@ -36,6 +36,9 @@ int main()
 		printf("9)Zapisz zawartosc listy z pliku\n");
 		printf("10)Wyswietl zawartosc listy\n");
 		printf("11)Usun wszystkie wystapienia elementu\n");
+		printf("12)Wyznacz wartosc najczestrza\n");
+		printf("13)\n");
+		printf("14)Odwracanie listy\n");
 		printf("0)Wyjscie\n");
 		scanf("%d", &chose);
 		switch (chose)
@@ -112,6 +115,28 @@ int main()
 				case 2:
 					find_value(&find);
 					list_delete_all_found_not_rek(&head, find);
+					continue;
+				default:
+					continue;
+				}
+			} while (chose != 1 && chose != 2);
+			continue;
+		case 12:
+			list_value_most_common(&head);
+			continue;
+		case 14:
+			do
+			{
+				system("CLS");
+				printf("1) Rekurencyjnie\n2) Nierekurencyjnie\n");
+				scanf("\n%d", &chose);
+				switch (chose)
+				{
+				case 1:
+					list_reverse_rek(&head);
+					continue;
+				case 2:
+					list_reverse(&head);
 					continue;
 				default:
 					continue;

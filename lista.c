@@ -283,16 +283,15 @@ void list_delete_all_found_rek(list **p, int value)
 {
 	if (*p != NULL)
 	{
-		int usuniety = 0;
+		int deleted = 0;
 		if ((*p)->data == value)
 		{
 				list *tmp = *p;
 				*p = (*p)->next;
 				free(tmp);
-				usuniety = 1;
+				deleted = 1;
 		}
-		//if((*p)->next == NULL)
-		if (usuniety)
+		if (deleted)
 			list_delete_all_found_rek(p, value);
 		else
 			list_delete_all_found_rek(&(*p)->next, value);
@@ -301,5 +300,25 @@ void list_delete_all_found_rek(list **p, int value)
 
 void list_value_most_common(list **p)
 {
+	
+}
 
+void list_reverse(list **p)
+{
+
+}
+
+void list_reverse_rek(list **p)
+{
+	list *first, *rest;
+	if (*p == NULL)
+		return;
+	first = *p;
+	rest = (*p)->next;
+	if (rest == NULL)
+		return;
+	list_reverse_rek(&rest);
+	first->next->next = first;
+	first->next = NULL;
+	*p = rest;
 }
