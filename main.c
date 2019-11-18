@@ -123,7 +123,8 @@ int main()
 			} while (chose != 1 && chose != 2);
 			continue;
 		case 12:
-			list_value_most_common(&head);
+			printf("Najczesciej wystepujaca wartosc to: %d\n",list_value_most_common(&head));
+			system("PAUSE");
 			//list_value_most_common(&head);
 			continue;
 		case 14:

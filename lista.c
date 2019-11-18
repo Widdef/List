@@ -312,20 +312,21 @@ int list_count(list **p, int value)
 
 int list_value_most_common(list **p)
 {
-	if (*p == NULL)
+	list **tmp = p;
+	if (*tmp == NULL)
 		return;
 	int most_common;
 	int count = 0;
 	int count_pom;
-	while (*p != NULL)
+	while (*tmp != NULL)
 	{
-		count_pom = list_count((*p)->next, (*p)->data);
+		count_pom = list_count(&(*tmp)->next, (*tmp)->data);
 		if (count < count_pom)
 		{
-			most_common = (*p)->data;
+			most_common = (*tmp)->data;
 			count = count_pom;
 		}
-		(*p) = (*p)->next;
+		(*tmp) = (*tmp)->next;
 	}
 	return most_common;
 }
