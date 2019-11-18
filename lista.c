@@ -281,8 +281,25 @@ void list_delete_all_found_not_rek(list **p, int value)
 
 void list_delete_all_found_rek(list **p, int value)
 {
-	while (list_find(p, value))
+	if (*p != NULL)
 	{
-
+		int usuniety = 0;
+		if ((*p)->data == value)
+		{
+				list *tmp = *p;
+				*p = (*p)->next;
+				free(tmp);
+				usuniety = 1;
+		}
+		//if((*p)->next == NULL)
+		if (usuniety)
+			list_delete_all_found_rek(p, value);
+		else
+			list_delete_all_found_rek(&(*p)->next, value);
 	}
+}
+
+void list_value_most_common(list **p)
+{
+
 }
