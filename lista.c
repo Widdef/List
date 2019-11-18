@@ -162,17 +162,13 @@ void list_find_add_before(list **p, int value, int find)
 
 void list_find_delete(list **p, int find)
 {
-	int flag = 0;
 	int index = 0;
 	list **marker = p;
 	while (*marker != NULL)
 	{
 		index++;
 		if ((*marker)->next->data == find)
-		{
-			flag = 1;
 			break;
-		}
 		marker = &(*marker)->next;
 	}
 	list *tmp = (*marker)->next;
@@ -271,7 +267,7 @@ void list_to_file(list *head)
 	} while (!value); // Pêtla nie zakonczy sie do momentu podania pliku z rozszerzeniem txt
 }
 
-void list_delete_all_found_not_rek(list **p, int value)
+void list_delete_all_found_not_rek(list **p, int value) // 2 zadanie
 {
 	while (list_find(p,value))
 	{
@@ -279,7 +275,7 @@ void list_delete_all_found_not_rek(list **p, int value)
 	}
 }
 
-void list_delete_all_found_rek(list **p, int value)
+void list_delete_all_found_rek(list **p, int value)  // 2 zadanie
 {
 	if (*p != NULL)
 	{
@@ -310,7 +306,7 @@ int list_count(list **p, int value)
 	return count;
 }
 
-int list_value_most_common(list **p)
+int list_value_most_common(list **p) // 3 zadanie
 {
 	list **tmp = p;
 	if (*tmp == NULL)
@@ -331,12 +327,24 @@ int list_value_most_common(list **p)
 	return most_common;
 }
 
-void list_reverse(list **p)
+void list_delete_indivisible(list **p, int value) // 4 zadanie
+{
+	list **marker = p;
+	while (*marker != NULL)
+	{
+		if ((*marker)->data % value != 0)
+			list_delete_all_found_rek(marker, (*marker)->data);
+		marker = &(*marker)->next;
+	}
+}
+
+
+void list_reverse(list **p) // 5 zadanie 
 {
 
 }
 
-void list_reverse_rek(list **p)
+void list_reverse_rek(list **p) // 5 zadanie
 {
 	list *first, *rest;
 	if (*p == NULL)

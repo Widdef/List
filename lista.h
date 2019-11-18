@@ -26,3 +26,4 @@ int list_value_most_common(list **);
 void list_reverse(list **);
 void list_reverse_rek(list **);
 int list_count(list **, int);
+void list_delete_indivisible(list **, int);

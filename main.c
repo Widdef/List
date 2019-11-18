@@ -6,7 +6,7 @@
 
 void ask_value(int *value)
 {
-	printf("\nPodaj wartosc do dodania: ");
+	printf("\nPodaj wartosc: ");
 	scanf("%d", value);
 }
 void find_value(int *value)
@@ -38,7 +38,7 @@ int main()
 		printf("10)Wyswietl zawartosc listy\n");
 		printf("11)Usun wszystkie wystapienia elementu\n");
 		printf("12)Wyznacz wartosc najczestsza\n");
-		printf("13)\n");
+		printf("13)Usun niepodzielne elementy z listy\n");
 		printf("14)Odwracanie listy\n");
 		printf("0)Wyjscie\n");
 		scanf("%d", &chose);
@@ -125,7 +125,10 @@ int main()
 		case 12:
 			printf("Najczesciej wystepujaca wartosc to: %d\n",list_value_most_common(&head));
 			system("PAUSE");
-			//list_value_most_common(&head);
+			continue;
+		case 13:
+			ask_value(&value);
+			list_delete_indivisible(&head, value);
 			continue;
 		case 14:
 			do
