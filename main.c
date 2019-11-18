@@ -22,6 +22,7 @@ int main()
 	int chose = 0;
 	int value;
 	int find;
+	int test;
 	do
 	{
 		system("CLS");
@@ -36,7 +37,7 @@ int main()
 		printf("9)Zapisz zawartosc listy z pliku\n");
 		printf("10)Wyswietl zawartosc listy\n");
 		printf("11)Usun wszystkie wystapienia elementu\n");
-		printf("12)Wyznacz wartosc najczestrza\n");
+		printf("12)Wyznacz wartosc najczestsza\n");
 		printf("13)\n");
 		printf("14)Odwracanie listy\n");
 		printf("0)Wyjscie\n");
@@ -123,6 +124,7 @@ int main()
 			continue;
 		case 12:
 			list_value_most_common(&head);
+			//list_value_most_common(&head);
 			continue;
 		case 14:
 			do

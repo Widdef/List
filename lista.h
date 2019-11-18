@@ -22,6 +22,7 @@ int check_sting(char *);
 void list_to_file(list *);
 void list_delete_all_found_not_rek(list **,int);
 void list_delete_all_found_rek(list **,int);
-void list_value_most_common(list **);
+int list_value_most_common(list **);
 void list_reverse(list **);
 void list_reverse_rek(list **);
+int list_count(list **, int);

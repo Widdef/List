@@ -1,4 +1,4 @@
 ﻿  lista.c
-  main.c
-  Generating Code...
+c:\users\mzygo\source\repos\widdef\list\lista.c(322): warning C4047: 'function': 'list **' differs in levels of indirection from 'ell *'
+c:\users\mzygo\source\repos\widdef\list\lista.c(322): warning C4024: 'list_count': different types for formal and actual parameter 1
   lista.vcxproj -> C:\Users\mzygo\source\repos\Widdef\List\x64\Debug\lista.exe

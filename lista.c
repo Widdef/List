@@ -183,14 +183,14 @@ void list_find_delete(list **p, int find)
 int check_sting(char *str)
 {
 	int len = (int)strlen(str);
-	if (str[len - 3] == 't' && str[len - 4] == '.' && str[len - 2] == 'x' && str[len] == 't');
+	if ((str[len - 3] == 't') && (str[len - 4] == '.') && (str[len - 2] == 'x') && (str[len - 1] == 't'))
 		return 1;
 	return 0;
 }
 
 void list_from_file(list **head)
 {
-	int value;
+	int value = 0;
 	char file[256];
 	int i_value;
 	int b_val = 0;
@@ -298,9 +298,36 @@ void list_delete_all_found_rek(list **p, int value)
 	}
 }
 
-void list_value_most_common(list **p)
+int list_count(list **p, int value)
 {
-	
+	int count = 0;
+	while (*p != NULL)
+	{
+		if ((*p)->data == value)
+			count++;
+		p = &(*p)->next;
+	}
+	return count;
+}
+
+int list_value_most_common(list **p)
+{
+	if (*p == NULL)
+		return;
+	int most_common;
+	int count = 0;
+	int count_pom;
+	while (*p != NULL)
+	{
+		count_pom = list_count((*p)->next, (*p)->data);
+		if (count < count_pom)
+		{
+			most_common = (*p)->data;
+			count = count_pom;
+		}
+		(*p) = (*p)->next;
+	}
+	return most_common;
 }
 
 void list_reverse(list **p)
