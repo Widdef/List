@@ -10,7 +10,8 @@ typedef struct ell
 }list;
 void list_add_end(list**, int);
 void list_add_start(list**, int);
-void list_read(list*);
+void list_show(list*);
+void list_show_from_back(list **);
 void list_delete_first(list**);
 void list_delete_last(list**);
 int list_find(list**, int);

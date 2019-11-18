@@ -98,7 +98,9 @@ int main()
 			list_to_file(head);
 			continue;
 		case 10:
-			list_read(head);
+			list_show(head);
+			printf("\n\n\n");
+			list_show_from_back(&head);
 			system("PAUSE");
 			continue;
 		case 11:

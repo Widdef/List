@@ -33,7 +33,7 @@ void list_add_start(list **p, int value)
 	}
 }
 
-void list_read(list *p)
+void list_show(list *p)
 {
 	printf("\n\n");
 	while (p != NULL)
@@ -41,6 +41,22 @@ void list_read(list *p)
 		printf("%d\n", p->data);
 		p = p->next;
 	}
+}
+void list_show_from_back(list **p) // 1 do pokazania
+{
+	list **tmp, *first, *rest;
+	tmp = p;
+	if (tmp == NULL)
+		return;
+	first = *tmp;
+	rest = (*tmp)->next;
+	if (rest == NULL)
+		return;
+	list_reverse_rek(&rest);
+	first->next->next = first;
+	first->next = NULL;
+	*tmp = rest;
+	list_show(*tmp);
 }
 
 void list_delete_first(list **p)
@@ -329,12 +345,12 @@ int list_value_most_common(list **p) // 3 zadanie
 
 void list_delete_indivisible(list **p, int value) // 4 zadanie
 {
-	list **marker = p;
-	while (*marker != NULL)
+	list *marker = *p;
+	while (marker != NULL)
 	{
-		if ((*marker)->data % value != 0)
-			list_delete_all_found_rek(marker, (*marker)->data);
-		marker = &(*marker)->next;
+		if (marker->data % value != 0)
+			list_delete_all_found_not_rek(&marker, marker->data);
+		marker = marker->next;
 	}
 }
 
