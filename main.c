@@ -99,8 +99,8 @@ int main()
 			continue;
 		case 10:
 			list_show(head);
-			printf("\n\n\n");
-			list_show_from_back(&head);
+			//printf("\n\n\n");
+			//list_show_from_back(&head);
 			system("PAUSE");
 			continue;
 		case 11:

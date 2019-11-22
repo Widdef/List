@@ -168,7 +168,7 @@ void list_find_add_before(list **p, int value, int find)
 		printf("Element not exist\n");
 		do
 		{
-			printf("Do you want to create element as first element of the list? (Y/N)");
+			printf("Do you want to create element as first element of the list? (Y/N)\n");
 			scanf("%c", &dec);
 		} while (dec != 'y' && dec != 'Y' && dec != 'n' && dec != 'N');
 		if (dec == 'Y' || dec == 'y')
@@ -180,16 +180,26 @@ void list_find_delete(list **p, int find)
 {
 	int index = 0;
 	list **marker = p;
-	while (*marker != NULL)
+	if ((*marker)->data == find)
+	{
+		list_delete_first(p);
+		return;
+	}
+	while ((*marker)->next != NULL)
 	{
 		index++;
 		if ((*marker)->next->data == find)
 			break;
 		marker = &(*marker)->next;
 	}
-	list *tmp = (*marker)->next;
-	(*marker)->next = (*marker)->next->next;
-	free(tmp);
+	if ((*marker)->next != NULL)
+	{
+		list *tmp = (*marker)->next;
+		(*marker)->next = (*marker)->next->next;
+		free(tmp);
+	}
+	else
+		list_delete_last(p);
 }
 
 int check_sting(char *str)
@@ -345,12 +355,13 @@ int list_value_most_common(list **p) // 3 zadanie
 
 void list_delete_indivisible(list **p, int value) // 4 zadanie
 {
-	list *marker = *p;
-	while (marker != NULL)
+	list **marker = p;
+	while (*marker != NULL)
 	{
-		if (marker->data % value != 0)
-			list_delete_all_found_not_rek(&marker, marker->data);
-		marker = marker->next;
+		if ((*marker)->data % value != 0)
+			list_delete_all_found_rek(marker, (*marker)->data);
+		else
+			marker = &(*marker)->next;
 	}
 }
 

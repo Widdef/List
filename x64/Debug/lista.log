@@ -1,4 +1,4 @@
 ﻿  lista.c
-c:\users\mzygo\source\repos\widdef\list\lista.c(329): warning C4033: 'list_value_most_common' must return a value
-c:\users\mzygo\source\repos\widdef\list\lista.c(344): warning C4715: 'list_value_most_common': not all control paths return a value
+c:\users\mzygo\source\repos\widdef\list\lista.c(339): warning C4033: 'list_value_most_common' must return a value
+c:\users\mzygo\source\repos\widdef\list\lista.c(354): warning C4715: 'list_value_most_common': not all control paths return a value
   lista.vcxproj -> C:\Users\mzygo\source\repos\Widdef\List\x64\Debug\lista.exe
