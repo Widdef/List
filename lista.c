@@ -368,21 +368,17 @@ void list_delete_indivisible(list **p, int value) // 4 zadanie
 
 void list_reverse(list **p) // 5 zadanie 
 {
-	list **marker = p;
-	list *prev;
-	list *cur;
-	if (*marker == NULL || (*marker)->next == NULL)
+	list *prev = NULL;
+	list *cur = *p;
+	list *next;
+	if (*p == NULL || (*p)->next == NULL)
 		return;
-	prev = *marker;
-	marker = &(*marker)->next;
-	cur = *marker;
-	prev->next = NULL;
-	while (*p != NULL)
+	while (cur != NULL)
 	{
-		p = &(*p)->next;
+		next = cur->next;
 		cur->next = prev;
 		prev = cur;
-		cur = *p;
+		cur = next;
 	}
 	*p = prev;
 }
