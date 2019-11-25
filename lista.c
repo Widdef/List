@@ -74,12 +74,12 @@ void list_delete_last(list **p)
 	if (*p != NULL)
 	{
 		list **marker = p;
-		while ((*marker)->next)
+		while ((*marker)->next->next)
 		{
 			marker = &(*marker)->next;
 		}
-		list *tmp = *marker;
-		(*p)->next = NULL;
+		list *tmp = (*marker)->next;
+		(*marker)->next = NULL;
 		free(tmp);
 	}
 }
