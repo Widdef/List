@@ -214,8 +214,6 @@ void list_from_file(list **head)
 {
 	int value = 0;
 	char file[256];
-	int i_value;
-	int b_val = 0;
 	FILE *fptr;
 	do {
 		printf_s("Podaj nazwe pliku: ");
@@ -231,24 +229,10 @@ void list_from_file(list **head)
 				fclose(fptr);
 				break;
 			}
-			do
+			while (fscanf(fptr, "%d", &value) != EOF)
 			{
-				i_value = fgetc(fptr);
-				if (i_value == 32)
-					continue;
-				if (i_value == 45)
-				{
-					b_val = 1;
-				}
-				if(i_value >= 48)
-					if (b_val)
-					{
-						list_add_end(head, (i_value - 48)*-1); // i_value przechowuje wartosci wg tablicy ascii
-						b_val = 0;
-					}
-					else
-						list_add_end(head, i_value - 48);
-			} while (i_value != EOF);
+				list_add_end(head, value);
+			}
 			printf("Udalo sie odczytac dane z pliku.\n");
 			fclose(fptr);
 			system("PAUSE");
