@@ -17,7 +17,7 @@ void list_add_end(list **p, int value)
 
 void list_add_start(list **p, int value)
 {
-	if (p == NULL)
+	if (*p == NULL)
 	{
 		list *new_el = (list*)malloc(sizeof(list));
 		new_el->data = value;

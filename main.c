@@ -22,7 +22,6 @@ int main()
 	int chose = 0;
 	int value;
 	int find;
-	int test;
 	do
 	{
 		system("CLS");
